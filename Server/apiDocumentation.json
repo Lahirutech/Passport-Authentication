@@ -1,0 +1,279 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Employee api",
+    "description": "The API for the Swivel Employee Dashboard",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://virtserver.swaggerhub.com/Lahirutech/Employee/1.0.0",
+      "description": "SwaggerHub API Auto Mocking"
+    }
+  ],
+  "paths": {
+    "/api/get/{id}": {
+      "get": {
+        "description": "Get a single employee details",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the Employee",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "example": 54
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/get": {
+      "get": {
+        "description": "returns all registered employees",
+        "operationId": "getDevices",
+        "responses": {
+          "200": {
+            "description": "All the employees",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "format": "uri",
+                    "example": "{\"_id\":\"62f013a8620a39dd36d96b89\",\"first_name\":\"Elvis\",\"last_name\":\"Konopelski\",\"email\":\"Mavis27@gmail.com\",\"number\":\"+94771277686\",\"gender\":\"M\",\"id\":\"9\",\"photo\":\"https://randomuser.me/api/portraits/men/66.jpg\"}"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/post": {
+      "post": {
+        "description": "Creating a new employee in the database",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/api_post_body"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully Created a new Employee"
+          }
+        }
+      }
+    },
+    "/employees/{id}": {
+      "get": {
+        "description": "Get a single employee details",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the Employee",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "example": 54
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_1"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/edit/{id}": {
+      "put": {
+        "description": "updating the employee",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the Employee",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "example": 54
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/edit_id_body"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully updatede mployee"
+          }
+        }
+      }
+    },
+    "/api/delete/{id}": {
+      "delete": {
+        "description": "delete the employee",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the Employee",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "example": 54
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully deleted employee"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "inline_response_200": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 4
+          },
+          "first_name": {
+            "type": "string",
+            "example": "Lanka Rathnayaka"
+          },
+          "last_name": {
+            "type": "string",
+            "example": "Manager"
+          },
+          "email": {
+            "type": "string",
+            "example": "Manager"
+          },
+          "number": {
+            "type": "string",
+            "example": "812575444"
+          },
+          "gender": {
+            "type": "string",
+            "example": "m"
+          }
+        }
+      },
+      "api_post_body": {
+        "type": "object",
+        "properties": {
+          "first_name": {
+            "type": "string",
+            "example": "Lanka Rathnayaka"
+          },
+          "last_name": {
+            "type": "string",
+            "example": "Manager"
+          },
+          "email": {
+            "type": "string",
+            "example": "Manager"
+          },
+          "number": {
+            "type": "string",
+            "example": "812575444"
+          },
+          "gender": {
+            "type": "string",
+            "example": "m"
+          }
+        }
+      },
+      "inline_response_200_1": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 4
+          },
+          "employee name": {
+            "type": "string",
+            "example": "Lanka Rathnayaka"
+          },
+          "employee title": {
+            "type": "string",
+            "example": "Manager"
+          }
+        }
+      },
+      "edit_id_body": {
+        "type": "object",
+        "properties": {
+          "first_name": {
+            "type": "string",
+            "example": "Lanka Rathnayaka"
+          },
+          "last_name": {
+            "type": "string",
+            "example": "Manager"
+          },
+          "email": {
+            "type": "string",
+            "example": "Manager"
+          },
+          "number": {
+            "type": "string",
+            "example": "812575444"
+          },
+          "gender": {
+            "type": "string",
+            "example": "m"
+          }
+        }
+      }
+    }
+  }
+}
