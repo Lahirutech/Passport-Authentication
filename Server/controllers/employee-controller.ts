@@ -5,7 +5,7 @@ import { Employee } from "../types";
 // @desc    Add employee
 // @route   Post /api/employee/post
 // @access  Public
-const postEmployee = (req: Request, res: Response) => {
+export const postEmployee = (req: Request, res: Response) => {
   const { first_name, last_name, email, number, gender } = req.body;
 
   const employee = new Employee({
@@ -35,7 +35,7 @@ const postEmployee = (req: Request, res: Response) => {
 // @route   Post /api/employee/get
 // @access  Public
 
-const findEmployee = (req: Request, res: Response) => {
+export const findEmployee = (req: Request, res: Response) => {
   if (req.params.id) {
     const id = req.params.id;
     Employee.findById(id)
@@ -67,7 +67,7 @@ const findEmployee = (req: Request, res: Response) => {
 // @desc   Edit employee
 // @route   Put /api/employee/edit/:id
 // @access  Public
-const editEmployee = (req: Request, res: Response) => {
+export const editEmployee = (req: Request, res: Response) => {
   const id = req.params.id;
   Employee.findByIdAndUpdate(id, req.body, {
     useFindAndModify: false,
@@ -90,7 +90,7 @@ const editEmployee = (req: Request, res: Response) => {
 // @desc   Delete employee
 // @route   Delete /api/employee/delete/:id
 // @access  Public
-const deleteEmployee = (req: Request, res: Response) => {
+export const deleteEmployee = (req: Request, res: Response) => {
   const id = req.params.id;
 
   Employee.findByIdAndDelete(id)
@@ -114,4 +114,3 @@ const deleteEmployee = (req: Request, res: Response) => {
     });
 };
 
-module.exports = { postEmployee, findEmployee, deleteEmployee, editEmployee };
