@@ -1,6 +1,6 @@
-const expressServer = require("express");
-const employeeController = require("../controllers/employee-controller")
-const router = expressServer.Router()
+import express from "express";
+import * as employeeController from "../controllers/employee-controller"
+const router = express.Router()
 
 router.get('/get', employeeController.findEmployee)
 router.get('/get/:id', employeeController.findEmployee)
