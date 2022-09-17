@@ -3,6 +3,8 @@ import passport from "passport";
 const router = express.Router()
 
 const CLIENT_URL = "http://localhost:3000/";
+const PROFILEE_URL = "http://localhost:3000/profile";
+
 
 router.get("/login/success", (req, res) => {
     if (req.user) {
@@ -13,13 +15,12 @@ router.get("/login/success", (req, res) => {
         })
     }
 })
-
-router.get("/logout", (req, res, next) => {
-    req.logout(function (err) {
-        if (err) { return next(err); }
-        res.redirect(CLIENT_URL);
+router.get("/logout", (req, res) => {
+    req.logout({ keepSessionInfo: false }, (err) => {
+        console.log(err)
     });
-})
+    res.redirect(CLIENT_URL);
+});
 
 router.get("/login/failed", (req, res) => {
     res.status(401).json({
@@ -32,7 +33,7 @@ router.get("/google", passport.authenticate("google", { scope: ["profile"] }))
 
 router.get("/google/callback",
     passport.authenticate("google", {
-        successRedirect: CLIENT_URL,
+        successRedirect: PROFILEE_URL,
         failureRedirect: "/login/failed",
     })
 );
