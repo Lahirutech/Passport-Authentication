@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -6,6 +6,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './components/Login';
 import Home from './components/Home';
 import Profile from './components/Profile';
+
+
+
 
 function App() {
   const [user, setUser] = useState(null)
@@ -18,7 +21,7 @@ function App() {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          "Access-Control-Allow-Credentials": true,
+          "Access-Control-Allow-Credentials": "true",
         }
       })
         .then((res) => {
