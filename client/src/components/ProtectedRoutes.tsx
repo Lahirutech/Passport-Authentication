@@ -43,7 +43,7 @@ const ProtectedRoutes = (props: ProtectedRouteType) => {
 				<Navigate to="/denied" />
 			)
 		) : (
-			<Navigate to="/login" />
+			<Navigate to="/login" /> 
 		)
 	} else {
 		return auth ? <Outlet /> : <Navigate to="/login" />
